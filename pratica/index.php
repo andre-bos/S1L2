@@ -1,3 +1,12 @@
+<?php
+
+// Inizializzo la sessione
+session_start();
+
+// Stampo l'array di sessione per verificare che i dati siano presenti
+print_r($_SESSION['userdata']);
+?>
+
 <!doctype html>
 <html lang="IT">
 <head>
@@ -42,34 +51,33 @@
 
         <div class="row">
             <div class="col d-flex align-items-center flex-column">
+                <h2>Utenti registrati</h2>
                 <table class="table w-50">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Cognome</th>
+                        <th scope="col">Città</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    <?php
+                    foreach ($_SESSION['userdata'] as $index => $user) {
+                        ?>
+                        <tr>
+                            <th scope="row"><?php echo $index; ?></th>
+                            <td><?php echo $user['nome']; ?></td>
+                            <td><?php echo $user['cognome']; ?></td>
+                            <td><?php echo $user['citta']; ?></td>
+                            <td><?php echo $user['username']; ?></td>
+                            <td><?php echo $user['password']; ?></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>

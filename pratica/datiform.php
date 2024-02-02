@@ -6,7 +6,7 @@ session_start();
 
 // Setto l'array di $_REQUEST all'interno della sessione con la chiave userdata
 
-$_SESSION['userdata'] = $_REQUEST;
+$_SESSION['userdata'][] = $_REQUEST;
 
 // Chiudo la sessione
 
