@@ -70,7 +70,16 @@
 
 
     # $_COOKIE
+        $cookie_name = 'Mario Rossi'; // Scrivo un cookie sul computer del client
+        setcookie('mioCookie', $cookie_name, time() + (86400 * 30)); // 86400 = 1 day
 
+    // Leggo un cookie, se presente, dal computer del client
+        if(!isset($_COOKIE['mioCookie'])) {
+            echo "Cookie is not set!";
+        } else {
+            echo "Cookie is set!<br>";
+            echo "Value is: " . $_COOKIE['mioCookie'];
+        }
 
     // Redirect su altra pagina
     header('Location: http://localhost/Giorno-2_PHP_Teoria/test.php');
